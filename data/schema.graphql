@@ -1,0 +1,142 @@
+type Error {
+  path: String!
+  message: String
+}
+
+type Usuario {
+  id: Int!
+  username: String!
+  email: String!
+  jwt: String
+  isAdmin: Boolean!
+}
+type Equipamento {
+  id: ID!
+  nome: String!
+  modelo: String
+  fabricante: String
+  nserie: String
+  responsavel: String
+  email_responsavel: String
+  localizacao: String
+  parametros: String
+  medida: String
+  ensaio: String
+  status: String
+  createdAt: String
+  updatedAt: String
+  cliente: Cliente!
+}
+type Cliente {
+  id: ID!
+  nome: String!
+  cnpj: String
+  responsavel: String
+  email_1: String
+  email_2: String
+  telefone: String
+  createdAt: String
+  updatedAt: String
+  empresa: Empresa!
+}
+
+type Empresa {
+  id: ID!
+  nome: String
+  descricao: String
+  cnpj: String
+  telefone: String
+  usuario: Usuario!
+}
+type Certificado {
+  id: ID!
+  nome: String
+  padrao: String
+  ambiente: String
+  observacao: String
+  data: String
+  nome_ap: String
+  email_ap: String
+  status: String
+  arquivo: String
+  createdAt: String
+  updatedAt: String
+  equipamento: Equipamento!
+}
+
+type RegisterResponse {
+  ok: Boolean!
+  usuario: Usuario
+  errors: [Error!]
+}
+type ResponseLogin {
+  ok: Boolean!
+  usuario: Usuario
+  errors: [Error!]
+}
+type Query {
+  usuario(id: ID!): Usuario
+  usuarios: [Usuario]
+  equipamento(id: ID!): Equipamento
+  equipamentos: [Equipamento]
+  cliente(id: ID!): Cliente
+  clientes: [Cliente]
+  certificado(id: ID!): Certificado
+  certificados: [Certificado]
+  me: Usuario
+  empresa(id: ID!): Empresa
+  empresas:[Empresa]
+}
+type Mutation {
+  signup(
+    username: String!
+    email: String!
+    password: String!
+  ): RegisterResponse!
+  login(email: String!, password: String!): ResponseLogin!
+  addClienteMutation(
+    empresaId: String!
+    nome: String!
+    cnpj: String
+    responsavel: String
+    email_1: String
+    email_2: String
+    telefone: String
+  ): Cliente
+  addEmpresaMutation(
+    usuarioId: String!
+    nome: String
+    cnpj: String
+    responsavel: String
+    email_1: String
+    email_2: String
+    telefone: String
+  ): Empresa
+  addEquipamentoMutation(
+      clienteId: String!
+      nome: String!
+      modelo: String
+      fabricante: String
+      nserie: String
+      responsavel: String
+      email_responsavel: String
+      localizacao: String
+      parametros: String
+      medida: String
+      ensaio: String
+      status: String
+    ): Equipamento
+  addCertificadoMutation(
+    equipamentoId: ID!
+    nome: String!
+    padrao: String
+    ambiente: String
+    observacao: String
+    data: String
+    nome_ap: String
+    email_ap: String
+    status: String
+    arquivo: String
+  ): Certificado
+
+}
