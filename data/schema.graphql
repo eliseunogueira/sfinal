@@ -1,3 +1,4 @@
+scalar Date
 type Error {
   path: String!
   message: String
@@ -23,8 +24,6 @@ type Equipamento {
   medida: String
   ensaio: String
   status: String
-  createdAt: String
-  updatedAt: String
   cliente: Cliente!
 }
 type Cliente {
@@ -35,8 +34,8 @@ type Cliente {
   email_1: String
   email_2: String
   telefone: String
-  createdAt: String
-  updatedAt: String
+  createdAt: Date
+  updatedAt: Date
   empresa: Empresa!
 }
 
@@ -59,8 +58,8 @@ type Certificado {
   email_ap: String
   status: String
   arquivo: String
-  createdAt: String
-  updatedAt: String
+  createdAt: Date
+  updatedAt: Date
   equipamento: Equipamento!
 }
 
@@ -85,7 +84,7 @@ type Query {
   certificados: [Certificado]
   me: Usuario
   empresa(id: ID!): Empresa
-  empresas:[Empresa]
+  empresas: [Empresa]
 }
 type Mutation {
   signup(
@@ -113,30 +112,29 @@ type Mutation {
     telefone: String
   ): Empresa
   addEquipamentoMutation(
-      clienteId: String!
-      nome: String!
-      modelo: String
-      fabricante: String
-      nserie: String
-      responsavel: String
-      email_responsavel: String
-      localizacao: String
-      parametros: String
-      medida: String
-      ensaio: String
-      status: String
-    ): Equipamento
+    clienteId: String!
+    nome: String!
+    modelo: String
+    fabricante: String
+    nserie: String
+    responsavel: String
+    email_responsavel: String
+    localizacao: String
+    parametros: String
+    medida: String
+    ensaio: String
+    status: String
+  ): Equipamento
   addCertificadoMutation(
     equipamentoId: ID!
     nome: String!
     padrao: String
     ambiente: String
     observacao: String
-    data: String
+    data: Date
     nome_ap: String
     email_ap: String
     status: String
     arquivo: String
   ): Certificado
-
 }

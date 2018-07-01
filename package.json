@@ -16,6 +16,7 @@
     "express": "^4.16.3",
     "express-jwt": "^5.3.1",
     "graphql": "^0.13.2",
+    "graphql-date": "^1.0.3",
     "graphql-tools": "^3.0.4",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.10",
