@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Equipamento.associate = function(models) {
     Equipamento.hasMany(models.certificado);
+    Equipamento.belongsTo(models.usuario);
   };
   return Equipamento;
 };

@@ -19,6 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {},
   );
-  Certificado.associate = function(models) {};
+  Certificado.associate = function(models) {
+    Certificado.belongsTo(models.usuario);
+  };
   return Certificado;
 };

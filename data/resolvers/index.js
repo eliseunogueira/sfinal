@@ -11,6 +11,9 @@ module.exports = {
     cliente: ({ clienteId }) => {
       return Cliente.cliente.findById(clienteId);
     },
+    usuario: ({ usuarioId }) => {
+      return Usuario.usuario.findById(usuarioId);
+    },
   },
   Empresa: {
     usuario: ({ usuarioId }) => {
@@ -21,10 +24,16 @@ module.exports = {
     equipamento: ({ equipamentoId }) => {
       return Equipamento.equipamento.findById(equipamentoId);
     },
+    usuario: ({ usuarioId }) => {
+      return Usuario.usuario.findById(usuarioId);
+    },
   },
   Cliente: {
     empresa: ({ empresaId }) => {
       return Empresa.empresa.findById(empresaId);
+    },
+    usuario: ({ usuarioId }) => {
+      return Usuario.usuario.findById(usuarioId);
     },
   },
   Query: {

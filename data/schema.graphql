@@ -9,7 +9,6 @@ type Usuario {
   username: String!
   email: String!
   jwt: String
-  isAdmin: Boolean!
 }
 type Equipamento {
   id: ID!
@@ -25,6 +24,7 @@ type Equipamento {
   ensaio: String
   status: String
   cliente: Cliente!
+  usuario: Usuario!
 }
 type Cliente {
   id: ID!
@@ -37,6 +37,7 @@ type Cliente {
   createdAt: Date
   updatedAt: Date
   empresa: Empresa!
+  usuario: Usuario!
 }
 
 type Empresa {
@@ -61,6 +62,7 @@ type Certificado {
   createdAt: Date
   updatedAt: Date
   equipamento: Equipamento!
+  usuario: Usuario!
 }
 
 type RegisterResponse {
@@ -94,6 +96,7 @@ type Mutation {
   ): RegisterResponse!
   login(email: String!, password: String!): ResponseLogin!
   addClienteMutation(
+    usuarioId: String!
     empresaId: String!
     nome: String!
     cnpj: String
@@ -112,6 +115,7 @@ type Mutation {
     telefone: String
   ): Empresa
   addEquipamentoMutation(
+    usuarioId: String!
     clienteId: String!
     nome: String!
     modelo: String
@@ -126,7 +130,8 @@ type Mutation {
     status: String
   ): Equipamento
   addCertificadoMutation(
-    equipamentoId: ID!
+    usuarioId: String!
+    equipamentoId: String!
     nome: String!
     padrao: String
     ambiente: String
