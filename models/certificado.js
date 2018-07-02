@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       email_ap: DataTypes.STRING,
       status: DataTypes.STRING,
       arquivo: DataTypes.STRING,
+      travado: DataTypes.BOOLEAN,
     },
     {},
   );

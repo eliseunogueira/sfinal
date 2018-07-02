@@ -1,4 +1,6 @@
 const { certificado } = require('../../models');
+const enviaEmail = require('../../enviaEmail');
+
 module.exports = {
   certificado,
   async getcertificado(_, { id }, { user }, info) {
@@ -15,7 +17,9 @@ module.exports = {
   },
   async addCertificadoMutation(_, args, { user }, info) {
     try {
-      return await certificado.create(args);
+      let temp = await certificado.create(args);
+      enviaEmail(temp.id, temp.email_ap);
+      return temp;
     } catch (e) {
       console.log(e.message);
       throw new Error(e);
@@ -31,6 +35,16 @@ module.exports = {
       };
     } catch (error) {
       throw new Error(error.message);
+    }
+  },
+  async novatemtativaEmail(_, args) {
+    try {
+      let temp = await certificado.findById(args.id);
+      enviaEmail(temp.id, temp.email_ap);
+      return temp;
+    } catch (e) {
+      console.log(e.message);
+      throw new Error(e);
     }
   },
 };

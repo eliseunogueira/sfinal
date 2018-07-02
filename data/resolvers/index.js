@@ -57,5 +57,6 @@ module.exports = {
     login: Usuario.login,
     signup: Usuario.signup,
     deleteCertificado: Certificado.removeCertificado,
+    novatemtativaEmail: Certificado.novatemtativaEmail,
   },
 };

@@ -146,4 +146,5 @@ type Mutation {
     arquivo: String
   ): Certificado
   deleteCertificado(id: String!): Status
+  novatemtativaEmail(id: String!): Certificado
 }
