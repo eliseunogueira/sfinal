@@ -11,7 +11,7 @@ module.exports = {
     if (!user) {
       throw new Error('Você não esta logado');
     }
-    return await certificado.findAll();
+    return await certificado.findAll({ where: { usuarioId: user.id } });
   },
   async addCertificadoMutation(_, args, { user }, info) {
     try {
@@ -20,5 +20,8 @@ module.exports = {
       console.log(e.message);
       throw new Error(e);
     }
+  },
+  async getCeritifadoAdmin(_, args, { user }, info) {
+    await certificado.findAll();
   },
 };

@@ -5,7 +5,7 @@ module.exports = {
     if (!user) {
       throw new Error('Você não esta logado');
     }
-    return await equipamento.findAll();
+    return await equipamento.findAll({ where: { usuarioId: user.id } });
   },
   async getequipamento(_, { id }, { user }, info) {
     if (!user) {

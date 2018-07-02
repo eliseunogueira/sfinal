@@ -11,7 +11,7 @@ module.exports = {
     if (!user) {
       throw new Error('Você não esta logado');
     }
-    return await cliente.findAll();
+    return await cliente.findAll({ where: { usuarioId: user.id } });
   },
   async addClienteMutation(_, args, { user }, info) {
     try {

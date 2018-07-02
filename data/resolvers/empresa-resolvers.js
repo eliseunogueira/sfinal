@@ -11,7 +11,7 @@ module.exports = {
     if (!user) {
       throw new Error('Você não esta logado');
     }
-    return await empresa.findAll();
+    return await empresa.findAll({ where: { usuarioId: user.id } });
   },
   async addEmpresaMutation(_, args, { user }, info) {
     try {
