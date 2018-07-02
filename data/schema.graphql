@@ -1,4 +1,7 @@
 scalar Date
+type Status {
+  message: String!
+}
 type Error {
   path: String!
   message: String
@@ -142,4 +145,5 @@ type Mutation {
     status: String
     arquivo: String
   ): Certificado
+  deleteCertificado(id: String!): Status
 }

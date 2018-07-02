@@ -56,5 +56,6 @@ module.exports = {
     addClienteMutation: Cliente.addClienteMutation,
     login: Usuario.login,
     signup: Usuario.signup,
+    deleteCertificado: Certificado.removeCertificado,
   },
 };

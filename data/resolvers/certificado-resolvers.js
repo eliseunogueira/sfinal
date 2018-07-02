@@ -21,7 +21,16 @@ module.exports = {
       throw new Error(e);
     }
   },
-  async getCeritifadoAdmin(_, args, { user }, info) {
-    await certificado.findAll();
+  async removeCertificado(_, args) {
+    try {
+      await certificado.destroy({
+        where: { id: args.id },
+      });
+      return {
+        message: 'Deletado com sucesso',
+      };
+    } catch (error) {
+      throw new Error(error.message);
+    }
   },
 };
